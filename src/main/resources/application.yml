@@ -1,0 +1,29 @@
+server:
+  port: 8888
+
+
+  
+spring:
+  profiles:
+    active: local
+  devtools:
+    restart:
+      enabled: true
+
+
+mybatis-plus:
+  typeAliasesPackage: com.abs.alibabaiot.model
+
+
+---
+spring:
+  profiles: local
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.101.57.159:3306/iot_mqtt
+    username: root
+    password: xulian705mysql
+    driverClassName: com.mysql.jdbc.Driver
+
+
+
