@@ -15,6 +15,15 @@
  */
 package com.aliyun.iot.util;
 
+import com.alibabaiot.business.model.C_Endgetwater;
+import com.alibabaiot.business.model.C_Getwater;
+import com.alibabaiot.business.model.C_Pay;
+import com.alibabaiot.command.model.*;
+import com.alibabaiot.firmwaremodel.C_Firmware;
+import com.alibabaiot.firmwaremodel.C_Subpackage;
+import com.alibabaiot.firmwaremodel.S_Firmware;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -541,4 +550,89 @@ public class ToolUtil {
         int lastIndexOf = fileWholeName.lastIndexOf(".");
         return fileWholeName.substring(lastIndexOf + 1);
     }
+
+
+    public static String  switchchange(String str,Integer packageindex ) throws Exception{
+        switch (str) {
+            case "s_status":
+                C_Status status = new C_Status();
+                status.setCid("c_status");
+                status.setHeat(1);
+                status.setOrderid("BT201810070100004");
+                status.setOutlet(0);
+                status.setTds(100);
+                status.setTemperature(75);
+                status.setUsing(1);
+                status.setWater(0);
+                return  new ObjectMapper().writeValueAsString(status);
+            case "s_heat":
+                C_Heat heat = new C_Heat();
+                heat.setCid("c_status");
+                heat.setHeat(1);
+                heat.setOrderid("BT201810070100004");
+                heat.setOutlet(0);
+                heat.setTds(100);
+                heat.setTemperature(75);
+                heat.setUsing(1);
+                heat.setWater(0);
+                return  new ObjectMapper().writeValueAsString(heat);
+            case "c_start":
+                C_Start start = new C_Start();
+                start.setCid("c_status");
+                start.setHeat(1);
+                start.setOrderid("BT201810070100004");
+                start.setOutlet(0);
+                start.setTds(100);
+                start.setTemperature(75);
+                start.setUsing(1);
+                start.setWater(0);
+                return  new ObjectMapper().writeValueAsString(start);
+            case "s_unbind":
+                C_Unbind unbind = new C_Unbind();
+                unbind.setCid("c_unbind");
+                unbind.setBindstatus(0);
+                unbind.setReason(1);
+                return  new ObjectMapper().writeValueAsString(unbind);
+            case "s_restart":
+                C_Restart restart = new C_Restart();
+                restart.setCid("c_restart");
+                restart.setRecapture(1);
+                return  new ObjectMapper().writeValueAsString(restart);
+            case "s_getwater":
+                C_Getwater getwater = new C_Getwater();
+                getwater.setCid("c_getwater");
+                getwater.setOrderid("BT201810070100004");
+                return  new ObjectMapper().writeValueAsString(getwater);
+            case "s_endgetwater":
+                C_Endgetwater endgetwater = new C_Endgetwater();
+                endgetwater.setCid("c_endgetwater");
+                endgetwater.setOrderid("BT201810070100004");
+                endgetwater.setSumwateryield(200);
+                return  new ObjectMapper().writeValueAsString(endgetwater);
+            case "s_pay":
+                C_Pay pay = new C_Pay();
+                pay.setCid("c_pay");
+                pay.setOrderid("BT201810070100004");
+                return  new ObjectMapper().writeValueAsString(pay);
+            case "s_subpackage":
+                C_Subpackage subpackage = new C_Subpackage();
+                subpackage.setCid("c_subpackage");
+                subpackage.setPackageindex(packageindex);
+                subpackage.setStatus(1);
+                return  new ObjectMapper().writeValueAsString(subpackage);
+            case "s_firmware":
+                C_Firmware firmware = new C_Firmware();
+                firmware.setCid("c_firmware");
+                firmware.setStatus(1);
+                return  new ObjectMapper().writeValueAsString(firmware);
+            default:
+               return  "";
+
+        }
+}
+
+
+
+
+
 }

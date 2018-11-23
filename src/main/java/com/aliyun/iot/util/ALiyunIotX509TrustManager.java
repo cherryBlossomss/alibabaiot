@@ -4,6 +4,8 @@
  */
 package com.aliyun.iot.util;
 
+import com.alibabaiot.service.impl.SimpleClient4IOT;
+
 import java.io.InputStream;
 import java.net.Socket;
 import java.security.KeyStore;

@@ -21,9 +21,15 @@ public class Mqtt extends Model<Mqtt> {
 	 */
 	@TableId(value = "id", type = IdType.AUTO)
 	private Integer id;
-	private String Message ;
+	//类型（1-发送 2-接收）
+	private String type;
+	private String message ;
     private Date time ;
-    
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -32,14 +38,22 @@ public class Mqtt extends Model<Mqtt> {
 		this.id = id;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getMessage() {
-		return Message;
+		return message;
 	}
 
 	public void setMessage(String message) {
-		Message = message;
+		this.message = message;
 	}
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+
 	public Date getTime() {
 		return time;
 	}
@@ -47,8 +61,15 @@ public class Mqtt extends Model<Mqtt> {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+
+	@Override
 	public String toString() {
-		return "Mqtt [id=" + id + ", Message=" + Message + ", time=" + time + "]";
+		return "Mqtt{" +
+				"id=" + id +
+				", type='" + type + '\'' +
+				", message='" + message + '\'' +
+				", time=" + time +
+				'}';
 	}
 
 	@Override
